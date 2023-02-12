@@ -1,0 +1,23 @@
+{
+  "version":"0.2.0",
+  "configurations":[
+    {
+      "type":"java",
+      "name":"Launch MinhaClasse",
+      "request":"launch",
+      "mainClass": "MinhaClasse",
+      "projectName": "java-terminal-"
+    },
+    {
+      "type":"java",
+      "request":"launch",
+      "mainClass":"AboutMe",
+      "args":[
+        "Evelym",
+        "Pereira",
+        "31",
+        "1.58"
+      ]
+    }
+  ]
+}
