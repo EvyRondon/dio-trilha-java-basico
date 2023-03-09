@@ -1,30 +1,31 @@
 package Filas;
 
-public class No {
-  private Object object;
-  private No refNo;
+public class No<T> {
+  private T object;
+  private No<T> refNo;
 
   public No() {
   }
 
-  public No(Object object, No refNo) {
+  public No(T object) {
+
+    this.refNo = this.getRefNo() != null ? this.getRefNo() : null;
     this.object = object;
-    this.refNo = refNo;
   }
 
-  public Object getObject() {
+  public T getObject() {
     return object;
   }
 
-  public void setObject(Object object) {
+  public void setObject(T object) {
     this.object = object;
   }
 
-  public No getRefNo() {
+  public No<T> getRefNo() {
     return refNo;
   }
 
-  public void setRefNo(No refNo) {
+  public void setRefNo(No<T> refNo) {
     this.refNo = refNo;
   }
 

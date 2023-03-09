@@ -1,21 +1,37 @@
 package Filas;
 
-public class Fila {
-  private No refNoentradaFila;
+public class Fila<T> {
+  private No<T> refNoEntradaFila;
 
   public Fila() {
-    this.refNoentradaFila = null;
+    this.refNoEntradaFila = null;
   }
 
-  public void enqueue(No novoNo) {
-    novoNo.setRefNo(refNoentradaFila);
-    refNoentradaFila = novoNo;
+  public void enqueue(T object) {
+    No novoNo = new No(object);
+    novoNo.setRefNo(refNoEntradaFila);
+    refNoEntradaFila = novoNo;
   }
 
-  public No dequeue() {
+  public T fist() {
     if (!this.isEmpty()) {
-      No noAuxiliar = refNoentradaFila;
-      No primeiroNo = refNoentradaFila;
+      No primeiroNo = refNoEntradaFila;
+      while (true) {
+        if (primeiroNo.getRefNo() != null) {
+          primeiroNo = primeiroNo.getRefNo();
+        } else {
+          break;
+        }
+      }
+      return (T) primeiroNo.getObject();
+    }
+    return null;
+  }
+
+  public T dequeue() {
+    if (!this.isEmpty()) {
+      No noAuxiliar = refNoEntradaFila;
+      No primeiroNo = refNoEntradaFila;
       while (true) {
         if (primeiroNo.getRefNo() != null) {
           noAuxiliar = primeiroNo;
@@ -25,38 +41,24 @@ public class Fila {
           break;
         }
       }
-      return primeiroNo;
-    }
-    return null;
-  }
-
-  public No fist() {
-    if (!this.isEmpty()) {
-      No primeiroNo = refNoentradaFila;
-      while (true) {
-        if (primeiroNo.getRefNo() != null) {
-          primeiroNo = primeiroNo.getRefNo();
-        } else {
-          break;
-        }
-      }
+      return (T) primeiroNo.getObject();
     }
     return null;
   }
 
   public boolean isEmpty() {
-    return refNoentradaFila == null;
+    return refNoEntradaFila == null ? true : false;
   }
 
   @Override
   public String toString() {
     String stringRetorno = "";
-    No noAux = refNoentradaFila;
+    No noAux = refNoEntradaFila;
 
-    if (refNoentradaFila != null) {
+    if (refNoEntradaFila != null) {
       while (true) {
-        stringRetorno += "[No{Objeto=" + noAux.getObject() + "}]";
-        if (noAux.getObject() != null)
+        stringRetorno += "[No{Objeto=" + noAux.getObject() + "}]--->";
+        if (noAux.getRefNo() != null)
           noAux = noAux.getRefNo();
         else {
           stringRetorno += "null";
