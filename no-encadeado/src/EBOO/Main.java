@@ -20,5 +20,9 @@ public class Main {
     double capacidadeCity = carroCity.valorTotalEncherTanque(5.60);
     System.out.println("A capacidade do tanque " + capacidadeCity);
 
+    Funcionario mariaOliveira = new Faxineiro();
+    mariaOliveira.nome = "Maria";
+    mariaOliveira.salario = 1500.00;
+
   }
 }
